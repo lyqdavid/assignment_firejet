@@ -1,0 +1,36 @@
+Arguments: 
+  /usr/local/Cellar/node/20.3.1/bin/node /usr/local/bin/yarn init
+
+PATH: 
+  /Users/limdavid/.rvm/gems/ruby-2.7.0/bin:/Users/limdavid/.rvm/gems/ruby-2.7.0@global/bin:/Users/limdavid/.rvm/rubies/ruby-2.7.0/bin:/Users/limdavid/google-cloud-sdk/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/local/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/limdavid/.rvm/gems/ruby-2.7.0/bin:/Users/limdavid/.rvm/gems/ruby-2.7.0@global/bin:/Users/limdavid/.rvm/rubies/ruby-2.7.0/bin:/Users/limdavid/google-cloud-sdk/bin:/Users/limdavid/anaconda3/bin:/Users/limdavid/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/Users/limdavid/.rvm/bin:/Users/limdavid/.rvm/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  20.3.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: Can't answer a question unless a user TTY
+      at ConsoleReporter.question (/usr/local/lib/node_modules/yarn/lib/cli.js:96935:59)
+      at Object.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:89125:38)
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "assignment_firejet",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
