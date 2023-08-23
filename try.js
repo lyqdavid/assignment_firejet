@@ -1,0 +1,1 @@
+console.log("abcdefg".slice(0,2))

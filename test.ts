@@ -55,8 +55,7 @@ export const DEFAULT_REACT_LOADING_FILES: SandpackBundlerFiles = {
 //TODO: Figure out why tailwind is so obsessed with compiling bg-[xyz] causing our compile to fail when the file is not there 
 export const DEFAULT_REACT_FILES: SandpackBundlerFiles = {
     "/App.jsx": {
-        code: /*tsx*/` import "./styles.css"
-        export default function App() {
+        code: /*tsx*/` import "./styles.css";export default function App() {
         return (
         <div className="flex gap-2 w-[300px] h-[400px] bg-slate-500 p-4">
         <p>This text is big Hmm</p>
