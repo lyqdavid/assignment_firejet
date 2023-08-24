@@ -1,3 +1,10 @@
+/**
+ * 0) ensure test.ts file is present in the same folder as traverse.ts.
+ *      - if not modify line 40 to indicate correct file name.
+ * 1) Run `yarn start`
+ * 2) The output of traverse.ts will be stored as answer.ts
+ */
+
 import { NodePath, Node } from "@babel/traverse";
 
 interface nodeObject {
@@ -15,8 +22,8 @@ interface thirdPromiseObject {
 interface finalResultItem {
     newCode: string;
     lintedCode:string;
-    start:number;
-    end:number
+    start:number; // in case you want to use start and end number to insert in changes to code
+    end:number;
 }
 
 interface finalResultObject {
@@ -41,9 +48,7 @@ const firstPromise = new Promise<string>((resolve)=>{
 })
 
 async function lint(code: string): Promise<string> {
-    console.log("lint started")
-    // const toPrint = prettier.format(code,{parser: "babel" });
-    const toPrint = prettier.format(code);
+    const toPrint = prettier.format(code,{parser: "babel" });
     return toPrint;
 }
 
@@ -54,7 +59,6 @@ function checkingTemplateLiteral(tlObject: Node) : boolean{
       return true;
   });
 }
-
 
 function secondPromise(code: string) {
     return new Promise<thirdPromiseObject> ((resolve) => {
@@ -71,38 +75,6 @@ function secondPromise(code: string) {
     resolve({listOfCode:traverseList, code:code});
     });
 }
-
-// function thirdPromise(thirdPromiseObject:thirdPromiseObject): Promise<string[]> {
-//     // console.log("thirdPromise entered")
-//     // console.log("thirdPromiseObject is", thirdPromiseObject)
-//     const listOfCode = thirdPromiseObject.listOfCode
-//     let code = thirdPromiseObject.code
-//     // console.log("listOfCode is", listOfCode)
-//     return new Promise<string[]>((resolve, reject) => {
-//         let finalList = [] as string[];
-//         listOfCode.forEach(async (eachCode: Node) => {
-//             //   console.log("eachCode is", eachCode);
-//             if (eachCode.start && eachCode.end) {
-//                 const newCode = code.slice(eachCode.start+1, eachCode.end-1);
-//                 const lintedCode = await lint(newCode);
-//                 finalList.push(lintedCode);
-//                 code = code.slice(0, eachCode.start+1) + lintedCode + code.slice(eachCode.end-1) 
-//                 // console.log("newCode is", newCode)
-//                 // console.log("lintedCode is", lintedCode)
-//             } else reject("start and end doesn't exist");
-//             // lint(newCode).then((code:any)=>{finalList.push(code)});
-//         });
-//         // console.log("final list", finalList);
-//         resolve(finalList);
-//         // resolve(code)
-//     });
-// }
-
-// function printSolution(statement: string[]) {
-//     statement.forEach((code)=>{
-//         console.log("-------------------code is", code)
-//     })
-// }
 
 function thirdPromise(thirdPromiseObject:thirdPromiseObject): Promise<finalResultObject> {
     const listOfCode = thirdPromiseObject.listOfCode
@@ -121,7 +93,10 @@ function thirdPromise(thirdPromiseObject:thirdPromiseObject): Promise<finalResul
                     end:eachCode.end-1
                 });
             } else reject("start and end doesn't exist");
-            resolve({finalResult:finalList,code:code})
+            resolve({
+                finalResult:finalList,
+                code:code
+            })
         });
     });
 }
@@ -131,7 +106,14 @@ function printSolution(statement: finalResultObject) {
     statement.finalResult.forEach(lintedCodeObject => {
         code = code.replace(lintedCodeObject.newCode,lintedCodeObject.lintedCode)
     })
-    console.log(code)
+    // console.log(code)
+    fs.writeFile("answer.ts", code, (err: TypeError) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("File written successfully\n");
+        }
+    });
 }
 
 firstPromise
