@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node traverse.ts"
+    "start": "ts-node index.ts"
   },
   "devDependencies": {
     "@types/babel__generator": "^7.6.4",
